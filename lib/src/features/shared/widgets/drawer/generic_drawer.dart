@@ -36,15 +36,15 @@ class GenericDrawer extends StatelessWidget {
             ),
             ListTile(
               title: const Text(
-                'Home',
+                'Início',
                 style: TextStyle(
                   fontWeight: FontWeight.w500,
                   fontSize: 22,
                   color: AppColors.defaultWhite,
                 ),
               ),
-              // onTap: () => Modular.to.navigate('/home'),
-              onTap: () {},
+              onTap: () => Modular.to.navigate('/home'),
+              // onTap: () {},
             ),
             ListTile(
               title: const Text(
@@ -57,6 +57,18 @@ class GenericDrawer extends StatelessWidget {
               ),
               // onTap: () => Modular.to.navigate('/favorites'),
               onTap: () {},
+            ),
+            ListTile(
+              title: const Text(
+                'Perfil',
+                style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 22,
+                  color: AppColors.defaultWhite,
+                ),
+              ),
+              onTap: () => Modular.to.navigate('/profile'),
+              // onTap: () {},
             ),
             const Spacer(),
             Padding(
