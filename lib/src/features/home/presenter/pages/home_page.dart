@@ -7,9 +7,9 @@ import 'package:flutter/material.dart';
 class Establishment {
   final int id;
   final String name;
-  final String category;
+  final List<String> category;
   final String city;
-  final double value;
+  final String value;
   final String image;
   final String address;
   final String description;
@@ -40,10 +40,10 @@ class _HomePageState extends State<HomePage> {
     Establishment(
       id: 1,
       name: 'São Paulinho',
-      category: 'Society',
+      category: ['Society'],
       address: 'Avenida São Paulo, 1234',
       city: 'Taubaté',
-      value: 100.00,
+      value: 'R\$ 100.00 - R\$ 150.00',
       image: 'assets/images/arenaz_logo.png',
       description:
           'O local oferece uma quadra poliesportiva coberta, estacionamento gratuito e área kids para os acompanhantes.',
@@ -51,10 +51,10 @@ class _HomePageState extends State<HomePage> {
     Establishment(
       id: 2,
       name: 'Beach Master',
-      category: 'Beach Sports',
+      category: ['Beach Sports'],
       address: 'Rua do Mar, 456',
       city: 'Ubatuba',
-      value: 120.00,
+      value: 'R\$ 120.00 - R\$ 140.00',
       image: 'assets/images/arenaz_logo.png',
       description:
           'O complexo possui duas quadras de areia iluminadas, vestiários completos e uma lanchonete com opções saudáveis para os atletas.',
@@ -62,10 +62,10 @@ class _HomePageState extends State<HomePage> {
     Establishment(
       id: 3,
       name: 'Tênis Clube',
-      category: 'Tênis',
+      category: ['Tênis', 'Society'],
       address: 'Rua do Tênis, 789',
       city: 'São Paulo',
-      value: 90.00,
+      value: 'R\$ 90.00 - R\$130.00',
       image: 'assets/images/arenaz_logo.png',
       description:
           'A arena conta com campo de grama sintética, arquibancada coberta, espaço para eventos e aluguel de materiais esportivos.',
@@ -73,10 +73,10 @@ class _HomePageState extends State<HomePage> {
     Establishment(
       id: 4,
       name: 'Arena 360',
-      category: 'Outras',
+      category: ['Outra'],
       address: 'Rua do Esporte, 101',
       city: 'Campinas',
-      value: 110.00,
+      value: 'R\$ 110.00 - R\$ 150.00',
       image: 'assets/images/arenaz_logo.png',
       description:
           'A estrutura dispõe de três quadras de tênis, loja de artigos esportivos e um café com vista para os jogos.',

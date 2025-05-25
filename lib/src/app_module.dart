@@ -1,3 +1,4 @@
+import 'package:arenaz_mobile_v2/src/features/arena_details/presenter/pages/arena_details_page.dart';
 import 'package:arenaz_mobile_v2/src/features/auth/presenter/pages/auth_page.dart';
 import 'package:arenaz_mobile_v2/src/features/establishment_details/presenter/viewmodels/establishment_info_viewmodel.dart';
 import 'package:arenaz_mobile_v2/src/features/profile/presenter/pages/profile_page.dart';
@@ -20,16 +21,22 @@ class AppModule extends Module {
     r.child('/home', child: (context) => HomePage());
     r.child('/profile', child: (context) => ProfilePage());
     r.child(
-  '/establishment/details/:id',
-  child: (context) {
-    final id = Modular.args.params['id'];
-    final args = Modular.args.data as Map<String, dynamic>?;
+      '/establishment/details/:id',
+      child: (context) {
+        final id = Modular.args.params['id'];
+        final args = Modular.args.data as Map<String, dynamic>?;
 
-    return EstablishmentDetailsPage(
-      id: id ?? '',
-      arguments: args ?? {},
+        return EstablishmentDetailsPage(id: id ?? '', arguments: args ?? {});
+      },
     );
-  },
-);
+    r.child(
+      '/arena/details/:id',
+      child: (context) {
+        final id = Modular.args.params['id'];
+        final args = Modular.args.data as Map<String, dynamic>?;
+
+        return ArenaDetailsPage(id: id ?? '', arguments: args ?? {});
+      },
+    );
   }
 }

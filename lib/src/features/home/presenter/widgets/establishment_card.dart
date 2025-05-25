@@ -1,12 +1,13 @@
 import 'package:arenaz_mobile_v2/src/features/shared/colors/colors.dart';
+import 'package:arenaz_mobile_v2/src/features/shared/widgets/badges/category_badge.widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class EstablishmentCard extends StatefulWidget {
   final String name;
-  final String category;
+  final List<String> category;
   final String city;
-  final double value;
+  final String value;
   final String image;
   final String modularRoute;
   final Map<String, dynamic>? arguments;
@@ -83,11 +84,18 @@ class _EstablishmentCardState extends State<EstablishmentCard> {
                   ),
                 ],
               ),
-              Text(widget.category, style: const TextStyle(fontSize: 18)),
+              Wrap(
+                spacing: 8,
+                runSpacing: 4,
+                children:
+                    widget.category.map((category) {
+                      return CategoryBadge(category);
+                    }).toList(),
+              ),
               Text(widget.city, style: const TextStyle(fontSize: 18)),
               const SizedBox(height: 6),
               Text(
-                'R\$ ${widget.value.toStringAsFixed(2).replaceAll('.', ',')}/hora',
+                '${widget.value.replaceAll('.', ',')}/hora',
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20,

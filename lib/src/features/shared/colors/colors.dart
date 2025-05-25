@@ -6,7 +6,7 @@ class AppColors {
   static const Color tertiaryColor = Color(0xFF2F2F2F);
   static const Color backgroundColor = Color(0xFFF5F5F5);
   static const Color titleColor = Color(0xFF222222);
-  static const Color textColor = Color(0xFF909090);
+  static const Color textColor = Color(0xFF454545);
   static const Color accentColor = Color(0xFFFF5722);
   static const Color defaultWhite = Color(0xFFFFFFFF);
   static const Color defaultBlack = Color(0xFF000000);
