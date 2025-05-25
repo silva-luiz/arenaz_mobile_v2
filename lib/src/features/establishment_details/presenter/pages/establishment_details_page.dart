@@ -25,22 +25,29 @@ class EstablishmentDetailsPage extends StatelessWidget {
                 arguments['name'],
                 style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
               ),
-               
-              Text('${arguments['address']}, ${arguments['city']}', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,),),
+
+              Text(
+                '${arguments['address']}, ${arguments['city']}',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
               Text(arguments['category']),
-              Text('R\$ ${arguments['value'].toStringAsFixed(2).replaceAll('.', ',')}'),
+              Text(
+                'R\$ ${arguments['value'].toStringAsFixed(2).replaceAll('.', ',')}',
+              ),
               SizedBox(height: 12),
               Align(
                 alignment: Alignment.centerLeft,
-                child: Text('O espaço possui',
+                child: Text(
+                  'Sobre o lugar',
                   style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                 ),
               ),
-              Text('O espaço conta com três campos society, mesa de sinuca, bar no local e churrasqueira para uso dos clientes.'),
-            SizedBox(height: 12),
-            Align(
+              Text(arguments['description']),
+              SizedBox(height: 12),
+              Align(
                 alignment: Alignment.centerLeft,
-                child: Text('Arenas',
+                child: Text(
+                  'Arenas',
                   style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                 ),
               ),

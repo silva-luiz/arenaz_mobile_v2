@@ -1,10 +1,10 @@
 import 'package:arenaz_mobile_v2/src/features/auth/presenter/pages/auth_page.dart';
-import 'package:arenaz_mobile_v2/src/features/establishment_info/presenter/viewmodels/establishment_info_viewmodel.dart';
+import 'package:arenaz_mobile_v2/src/features/establishment_details/presenter/viewmodels/establishment_info_viewmodel.dart';
 import 'package:arenaz_mobile_v2/src/features/profile/presenter/pages/profile_page.dart';
 import 'package:arenaz_mobile_v2/src/features/register/presenter/pages/register_page.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:arenaz_mobile_v2/src/features/home/presenter/pages/home_page.dart';
-import 'package:arenaz_mobile_v2/src/features/establishment_info/presenter/pages/establishment_details_page.dart';
+import 'package:arenaz_mobile_v2/src/features/establishment_details/presenter/pages/establishment_details_page.dart';
 
 class AppModule extends Module {
   @override

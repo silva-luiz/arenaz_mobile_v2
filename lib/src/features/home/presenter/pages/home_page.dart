@@ -12,6 +12,7 @@ class Establishment {
   final double value;
   final String image;
   final String address;
+  final String description;
 
   Establishment({
     required this.id,
@@ -21,6 +22,7 @@ class Establishment {
     required this.value,
     required this.image,
     required this.address,
+    this.description = '',
   });
 }
 
@@ -43,6 +45,8 @@ class _HomePageState extends State<HomePage> {
       city: 'Taubaté',
       value: 100.00,
       image: 'assets/images/arenaz_logo.png',
+      description:
+          'O local oferece uma quadra poliesportiva coberta, estacionamento gratuito e área kids para os acompanhantes.',
     ),
     Establishment(
       id: 2,
@@ -52,6 +56,8 @@ class _HomePageState extends State<HomePage> {
       city: 'Ubatuba',
       value: 120.00,
       image: 'assets/images/arenaz_logo.png',
+      description:
+          'O complexo possui duas quadras de areia iluminadas, vestiários completos e uma lanchonete com opções saudáveis para os atletas.',
     ),
     Establishment(
       id: 3,
@@ -61,6 +67,8 @@ class _HomePageState extends State<HomePage> {
       city: 'São Paulo',
       value: 90.00,
       image: 'assets/images/arenaz_logo.png',
+      description:
+          'A arena conta com campo de grama sintética, arquibancada coberta, espaço para eventos e aluguel de materiais esportivos.',
     ),
     Establishment(
       id: 4,
@@ -70,6 +78,8 @@ class _HomePageState extends State<HomePage> {
       city: 'Campinas',
       value: 110.00,
       image: 'assets/images/arenaz_logo.png',
+      description:
+          'A estrutura dispõe de três quadras de tênis, loja de artigos esportivos e um café com vista para os jogos.',
     ),
   ];
 
@@ -137,6 +147,7 @@ class _HomePageState extends State<HomePage> {
                           'city': establishment.city,
                           'category': establishment.category,
                           'image': establishment.image,
+                          'description': establishment.description,
                         },
                       );
                     },

@@ -1,4 +1,4 @@
-import 'package:arenaz_mobile_v2/src/features/establishment_info/presenter/pages/establishment_details_page.dart';
+import 'package:arenaz_mobile_v2/src/features/establishment_details/presenter/pages/establishment_details_page.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 enum EstablishmentInfoRouteNamed { establishmentInfo }
