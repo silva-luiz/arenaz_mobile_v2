@@ -30,7 +30,7 @@ class EstablishmentDetailsPage extends StatelessWidget {
                 '${arguments['address']}, ${arguments['city']}',
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
-              Text(arguments['category']),
+              Text(arguments['category'], style: TextStyle(fontSize: 16)),
               Text(
                 'R\$ ${arguments['value'].toStringAsFixed(2).replaceAll('.', ',')}',
               ),

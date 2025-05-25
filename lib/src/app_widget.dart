@@ -5,7 +5,7 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'ArenaZ',
-      theme: ThemeData(primarySwatch: Colors.yellow),
+      theme: ThemeData(primarySwatch: Colors.yellow, fontFamily: 'ChakraPetch'),
       routerConfig: Modular.routerConfig,
     );
   }
