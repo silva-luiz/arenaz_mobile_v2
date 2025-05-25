@@ -1,6 +1,7 @@
 import 'package:arenaz_mobile_v2/src/features/shared/colors/colors.dart';
 import 'package:arenaz_mobile_v2/src/features/shared/widgets/drawer/generic_drawer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class HomeScaffoldWidget extends StatefulWidget {
   final Widget child;
@@ -34,7 +35,7 @@ class _HomeScaffoldWidgetState extends State<HomeScaffoldWidget> {
               icon: const Icon(Icons.person, size: 35),
               tooltip: 'Perfil',
               onPressed: () {
-                // Modular.to.navigate('/profile');
+                Modular.to.navigate('/profile');
               },
             ),
           ],

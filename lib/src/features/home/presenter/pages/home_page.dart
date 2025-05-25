@@ -11,6 +11,7 @@ class Establishment {
   final String city;
   final double value;
   final String image;
+  final String address;
 
   Establishment({
     required this.id,
@@ -19,6 +20,7 @@ class Establishment {
     required this.city,
     required this.value,
     required this.image,
+    required this.address,
   });
 }
 
@@ -37,32 +39,36 @@ class _HomePageState extends State<HomePage> {
       id: 1,
       name: 'São Paulinho',
       category: 'Society',
+      address: 'Avenida São Paulo, 1234',
       city: 'Taubaté',
-      value: 100.0,
+      value: 100.00,
       image: 'assets/images/arenaz_logo.png',
     ),
     Establishment(
       id: 2,
       name: 'Beach Master',
       category: 'Beach Sports',
+      address: 'Rua do Mar, 456',
       city: 'Ubatuba',
-      value: 120.0,
+      value: 120.00,
       image: 'assets/images/arenaz_logo.png',
     ),
     Establishment(
       id: 3,
       name: 'Tênis Clube',
       category: 'Tênis',
+      address: 'Rua do Tênis, 789',
       city: 'São Paulo',
-      value: 90.0,
+      value: 90.00,
       image: 'assets/images/arenaz_logo.png',
     ),
     Establishment(
       id: 4,
       name: 'Arena 360',
       category: 'Outras',
+      address: 'Rua do Esporte, 101',
       city: 'Campinas',
-      value: 110.0,
+      value: 110.00,
       image: 'assets/images/arenaz_logo.png',
     ),
   ];
@@ -122,13 +128,15 @@ class _HomePageState extends State<HomePage> {
                         city: establishment.city,
                         value: establishment.value,
                         image: establishment.image,
-                        modularRoute: '/detalhes-arena',
+                        modularRoute: '/establishment/details',
                         arguments: {
                           'id': establishment.id,
                           'name': establishment.name,
                           'value': establishment.value,
+                          'address': establishment.address,
                           'city': establishment.city,
                           'category': establishment.category,
+                          'image': establishment.image,
                         },
                       );
                     },

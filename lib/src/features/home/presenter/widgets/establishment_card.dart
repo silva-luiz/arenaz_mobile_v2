@@ -8,7 +8,7 @@ class EstablishmentCard extends StatefulWidget {
   final String city;
   final double value;
   final String image;
-  final String modularRoute; // nova propriedade
+  final String modularRoute;
   final Map<String, dynamic>? arguments;
 
   const EstablishmentCard({
