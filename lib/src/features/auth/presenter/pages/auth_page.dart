@@ -95,7 +95,7 @@ class AuthPage extends StatelessWidget {
                       RichText(
                         textAlign: TextAlign.center,
                         text: TextSpan(
-                          text: 'Ainda não conta? ',
+                          text: 'Ainda não tem conta? ',
                           style: const TextStyle(
                             fontSize: 16,
                             color: AppColors.titleColor,
