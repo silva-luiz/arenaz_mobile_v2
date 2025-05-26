@@ -92,6 +92,7 @@ class _EstablishmentCardState extends State<EstablishmentCard> {
                       return CategoryBadge(category);
                     }).toList(),
               ),
+              const SizedBox(height: 6),
               Text(widget.city, style: const TextStyle(fontSize: 18)),
               const SizedBox(height: 6),
               Text(
