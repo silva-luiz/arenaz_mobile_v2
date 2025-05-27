@@ -1,6 +1,6 @@
 import 'package:arenaz_mobile_v2/src/features/shared/colors/colors.dart';
 import 'package:arenaz_mobile_v2/src/features/shared/helpers/password_validator.dart';
-import 'package:arenaz_mobile_v2/src/features/shared/masks/mask_phone.dart';
+import 'package:arenaz_mobile_v2/src/features/shared/masks/mask_helper.dart';
 import 'package:arenaz_mobile_v2/src/features/shared/widgets/buttons/generic_button.dart';
 import 'package:arenaz_mobile_v2/src/features/shared/widgets/inputs/generic_input.dart';
 import 'package:arenaz_mobile_v2/src/features/shared/widgets/inputs/password_input.dart';
@@ -25,6 +25,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController confirmPasswordController =
       TextEditingController();
   final TextEditingController cellphoneController = TextEditingController();
+  final TextEditingController cepController = TextEditingController();
 
   void _submitForm() {
     if (_formKey.currentState?.validate() ?? false) {
@@ -45,6 +46,7 @@ class _RegisterPageState extends State<RegisterPage> {
     passwordController.dispose();
     confirmPasswordController.dispose();
     cellphoneController.dispose();
+    cepController.dispose();
     super.dispose();
   }
 
@@ -158,6 +160,29 @@ class _RegisterPageState extends State<RegisterPage> {
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Confirme sua senha';
+                            }
+                            return null;
+                          },
+                        ),
+                        GenericInput(
+                          hintText: 'CEP',
+                          controller: cepController,
+                          keyboardType: TextInputType.number,
+                          inputFormatters: [
+                            FilteringTextInputFormatter.digitsOnly,
+                            LengthLimitingTextInputFormatter(8),
+                            MaskHelper.cepFormatter(),
+                          ],
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return null;
+                            }
+                            final numericCep = value.replaceAll(
+                              RegExp(r'\D'),
+                              '',
+                            );
+                            if (numericCep.length != 8) {
+                              return 'Digite um CEP válido.';
                             }
                             return null;
                           },
