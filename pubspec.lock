@@ -244,7 +244,7 @@ packages:
     source: hosted
     version: "5.0.0"
   flutter_mobx:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: flutter_mobx
       sha256: ba5e93467866a2991259dc51cffd41ef45f695c667c2b8e7b087bf24118b50fe
@@ -430,7 +430,7 @@ packages:
     source: hosted
     version: "2.5.0"
   mobx_codegen:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: mobx_codegen
       sha256: "990da80722f7d7c0017dec92040b31545d625b15d40204c36a1e63d167c73cdc"

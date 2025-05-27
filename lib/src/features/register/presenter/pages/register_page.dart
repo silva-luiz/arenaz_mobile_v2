@@ -26,6 +26,11 @@ class _RegisterPageState extends State<RegisterPage> {
       TextEditingController();
   final TextEditingController cellphoneController = TextEditingController();
   final TextEditingController cepController = TextEditingController();
+  final TextEditingController addressController = TextEditingController();
+  final TextEditingController complementController = TextEditingController();
+  final TextEditingController neighborhoodController = TextEditingController();
+  final TextEditingController numberController = TextEditingController();
+  final TextEditingController cityController = TextEditingController();
 
   void _submitForm() {
     if (_formKey.currentState?.validate() ?? false) {
@@ -47,6 +52,11 @@ class _RegisterPageState extends State<RegisterPage> {
     confirmPasswordController.dispose();
     cellphoneController.dispose();
     cepController.dispose();
+    addressController.dispose();
+    complementController.dispose();
+    neighborhoodController.dispose();
+    numberController.dispose();
+    cityController.dispose();
     super.dispose();
   }
 
@@ -184,6 +194,63 @@ class _RegisterPageState extends State<RegisterPage> {
                             if (numericCep.length != 8) {
                               return 'Digite um CEP válido.';
                             }
+                            return null;
+                          },
+                        ),
+                        GenericInput(
+                          hintText: 'Rua',
+                          controller: addressController,
+
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Por favor, informe seu endereço.';
+                            }
+
+                            return null;
+                          },
+                        ),
+                        GenericInput(
+                          hintText: 'Complemento',
+                          controller: complementController,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return null;
+                            }
+
+                            return null;
+                          },
+                        ),
+                        GenericInput(
+                          hintText: 'Número',
+                          controller: numberController,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return null;
+                            }
+
+                            return null;
+                          },
+                        ),
+                        GenericInput(
+                          hintText: 'Bairro',
+                          controller: neighborhoodController,
+
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Por favor, informe seu endereço.';
+                            }
+
+                            return null;
+                          },
+                        ),
+                        GenericInput(
+                          hintText: 'Cidade',
+                          controller: cityController,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Por favor, informe sua cidade.';
+                            }
+
                             return null;
                           },
                         ),
