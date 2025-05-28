@@ -6,7 +6,8 @@ part 'register_viewmodel.g.dart';
 class RegisterViewmodel = _RegisterViewmodelBase with _$RegisterViewmodel;
 
 abstract class _RegisterViewmodelBase with Store {
-  final Dio _dio = Dio();
+  final Dio _dio;  
+  _RegisterViewmodelBase({Dio? dio}) : _dio = dio ?? Dio();
 
   // User info
   @observable
