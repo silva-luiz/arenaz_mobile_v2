@@ -1,28 +1,61 @@
-# This file configures the analyzer, which statically analyzes Dart code to
-# check for errors, warnings, and lints.
+# Configura o analisador que verifica estaticamente o código Dart
+# para erros, warnings e lints.
 #
-# The issues identified by the analyzer are surfaced in the UI of Dart-enabled
-# IDEs (https://dart.dev/tools#ides-and-editors). The analyzer can also be
-# invoked from the command line by running `flutter analyze`.
+# Os problemas identificados são mostrados em IDEs com suporte a Dart
+# e podem ser verificados via comando `flutter analyze`.
 
-# The following line activates a set of recommended lints for Flutter apps,
-# packages, and plugins designed to encourage good coding practices.
+# Ativa o conjunto de lints recomendados para projetos Flutter
 include: package:flutter_lints/flutter.yaml
 
-linter:
-  # The lint rules applied to this project can be customized in the
-  # section below to disable rules from the `package:flutter_lints/flutter.yaml`
-  # included above or to enable additional rules. A list of all available lints
-  # and their documentation is published at https://dart.dev/lints.
-  #
-  # Instead of disabling a lint rule for the entire project in the
-  # section below, it can also be suppressed for a single line of code
-  # or a specific dart file by using the `// ignore: name_of_lint` and
-  # `// ignore_for_file: name_of_lint` syntax on the line or in the file
-  # producing the lint.
-  rules:
-    # avoid_print: false  # Uncomment to disable the `avoid_print` rule
-    # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
+analyzer:
+  # Configurações adicionais para o analisador
+  strong-mode:
+    implicit-casts: false
+    implicit-dynamic: false
 
-# Additional information about this file can be found at
-# https://dart.dev/guides/language/analysis-options
+linter:
+  # Customização das regras de lint
+  rules:
+    # Regra para priorizar imports relativos quando aplicável
+    prefer_relative_imports: true
+    
+    # Outras regras recomendadas para Flutter
+    avoid_empty_else: true
+    avoid_print: true          # Desencoraja o uso de print() em produção
+    avoid_redundant_argument_values: true
+    avoid_renaming_method_parameters: true
+    avoid_return_types_on_setters: true
+    avoid_unused_constructor_parameters: true
+    cancel_subscriptions: true
+    close_sinks: true
+    comment_references: true
+    constant_identifier_names: true
+    control_flow_in_finally: true
+    directives_ordering: true
+    empty_catches: true
+    empty_constructor_bodies: true
+    library_names: true
+    library_prefixes: true
+    no_duplicate_case_values: true
+    null_closures: true
+    overridden_fields: true
+    package_api_docs: true
+    package_prefixed_library_names: true
+    prefer_final_fields: true
+    prefer_is_empty: true
+    prefer_is_not_empty: true
+    slash_for_doc_comments: true
+    test_types_in_equals: true
+    throw_in_finally: true
+    type_init_formals: true
+    unnecessary_brace_in_string_interps: true
+    unnecessary_const: true
+    unnecessary_new: true
+    unnecessary_null_in_if_null_operators: true
+    unnecessary_overrides: true
+    unnecessary_this: true
+    use_function_type_syntax_for_parameters: true
+    use_rethrow_when_possible: true
+    use_setters_to_change_properties: true
+    use_string_buffers: true
+    valid_regexps: true
