@@ -1,14 +1,15 @@
+import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+
 import '../../../shared/colors/colors.dart';
 import '../../../shared/helpers/password_validator.dart';
 import '../../../shared/masks/mask_helper.dart';
 import '../../../shared/widgets/buttons/generic_button.dart';
 import '../../../shared/widgets/inputs/generic_input.dart';
 import '../../../shared/widgets/inputs/password_input.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_modular/flutter_modular.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import '../viewmodels/register_viewmodel.dart';
 
 class RegisterPage extends StatefulWidget {

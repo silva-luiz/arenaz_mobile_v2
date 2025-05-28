@@ -1,7 +1,7 @@
-import 'presenter/pages/home_page.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-
 import '../establishment_details/presenter/pages/establishment_details_page.dart';
+import 'presenter/pages/home_page.dart';
+
 
 enum HomeRouteNamed { home, establishmentDetails }
 
@@ -11,12 +11,10 @@ extension HomeRouteNamedExtension on HomeRouteNamed {
       case HomeRouteNamed.home:
         return '/';
       case HomeRouteNamed.establishmentDetails:
-        return '/establishment/details/:id';
-      default:
-        return '/';
-    }
+        return '/establishment/details/:id';   }
   }
 }
+
 void homeRoutes(RouteManager r) {
   r.child(HomeRouteNamed.home._path, child: (context) => const HomePage());
 
@@ -26,14 +24,10 @@ void homeRoutes(RouteManager r) {
       final id = Modular.args.params['id'];
       final args = Modular.args.data as Map<String, dynamic>?;
 
-      return EstablishmentDetailsPage(
-        id: id ?? '',
-        arguments: args ?? {},
-      );
+      return EstablishmentDetailsPage(id: id ?? '', arguments: args ?? {});
     },
   );
 }
-
 
 @override
 void routes(r) => homeRoutes(r);

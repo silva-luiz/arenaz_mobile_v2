@@ -1,5 +1,6 @@
-import '../../colors/colors.dart';
 import 'package:flutter/material.dart';
+
+import '../../colors/colors.dart';
 
 class PasswordInput extends StatefulWidget {
   final String? label;

@@ -1,11 +1,12 @@
+import 'package:flutter_modular/flutter_modular.dart';
+
 import 'features/arena_details/presenter/pages/arena_details_page.dart';
 import 'features/auth/presenter/pages/auth_page.dart';
+import 'features/establishment_details/presenter/pages/establishment_details_page.dart';
 import 'features/establishment_details/presenter/viewmodels/establishment_info_viewmodel.dart';
+import 'features/home/presenter/pages/home_page.dart';
 import 'features/profile/presenter/pages/profile_page.dart';
 import 'features/register/presenter/pages/register_page.dart';
-import 'package:flutter_modular/flutter_modular.dart';
-import 'features/home/presenter/pages/home_page.dart';
-import 'features/establishment_details/presenter/pages/establishment_details_page.dart';
 
 class AppModule extends Module {
   @override

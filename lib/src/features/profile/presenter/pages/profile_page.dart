@@ -1,11 +1,12 @@
-import '../widgets/avatar_widget.dart';
+import 'package:flutter/material.dart';
+
 import '../../../shared/colors/colors.dart';
 import '../../../shared/helpers/password_validator.dart';
 import '../../../shared/widgets/buttons/generic_button.dart';
 import '../../../shared/widgets/drawer/generic_drawer.dart';
 import '../../../shared/widgets/inputs/generic_input.dart';
 import '../../../shared/widgets/inputs/password_input.dart';
-import 'package:flutter/material.dart';
+import '../widgets/avatar_widget.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -76,7 +77,6 @@ class _ProfilePageState extends State<ProfilePage> {
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
@@ -136,7 +136,6 @@ class _ProfilePageState extends State<ProfilePage> {
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(

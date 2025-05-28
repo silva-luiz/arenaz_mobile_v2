@@ -1,8 +1,8 @@
-import '../../../shared/widgets/badges/category_badge.widget.dart';
-import '../../../shared/widgets/buttons/generic_button.dart';
 import 'package:flutter/material.dart';
 
 import '../../../shared/colors/colors.dart';
+import '../../../shared/widgets/badges/category_badge.widget.dart';
+import '../../../shared/widgets/buttons/generic_button.dart';
 
 class ArenaCard extends StatelessWidget {
   final Map<String, dynamic> arena;

@@ -1,8 +1,9 @@
-import '../widgets/establishment_card.dart';
-import '../widgets/category_carousel.dart';
+import 'package:flutter/material.dart';
+
 import '../../../shared/colors/colors.dart';
 import '../../../shared/scaffold/home_scaffold_widget.dart';
-import 'package:flutter/material.dart';
+import '../widgets/category_carousel.dart';
+import '../widgets/establishment_card.dart';
 
 class Establishment {
   final int id;

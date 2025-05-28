@@ -1,7 +1,8 @@
-import '../../../shared/colors/colors.dart';
-import '../../../shared/widgets/badges/category_badge.widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+
+import '../../../shared/colors/colors.dart';
+import '../../../shared/widgets/badges/category_badge.widget.dart';
 
 class EstablishmentCard extends StatefulWidget {
   final String name;

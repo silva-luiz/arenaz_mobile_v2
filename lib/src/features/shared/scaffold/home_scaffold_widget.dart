@@ -1,7 +1,8 @@
-import '../colors/colors.dart';
-import '../widgets/drawer/generic_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+
+import '../colors/colors.dart';
+import '../widgets/drawer/generic_drawer.dart';
 
 class HomeScaffoldWidget extends StatefulWidget {
   final Widget child;

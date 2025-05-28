@@ -1,6 +1,7 @@
-import '../../colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+
+import '../../colors/colors.dart';
 
 class GenericDrawer extends StatelessWidget {
   const GenericDrawer({super.key});

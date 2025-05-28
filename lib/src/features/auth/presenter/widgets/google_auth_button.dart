@@ -1,5 +1,5 @@
-import '../../../shared/colors/colors.dart';
 import 'package:flutter/material.dart';
+import '../../../shared/colors/colors.dart';
 
 class GoogleAuthButton extends StatelessWidget {
   final VoidCallback onPressed;

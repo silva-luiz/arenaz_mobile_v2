@@ -1,5 +1,5 @@
-import 'presenter/pages/profile_page.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'presenter/pages/profile_page.dart';
 
 enum ProfileRouteNamed { profile }
 
@@ -7,8 +7,6 @@ extension ProfileRouteNamedExtension on ProfileRouteNamed {
   String get _path {
     switch (this) {
       case ProfileRouteNamed.profile:
-      return '/';
-    default:
       return '/';
     }
   }

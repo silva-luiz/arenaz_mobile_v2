@@ -1,11 +1,12 @@
-import '../widgets/google_auth_button.dart';
+import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+
 import '../../../shared/colors/colors.dart';
 import '../../../shared/widgets/buttons/generic_button.dart';
 import '../../../shared/widgets/inputs/generic_input.dart';
 import '../../../shared/widgets/inputs/password_input.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
+import '../widgets/google_auth_button.dart';
 
 class AuthPage extends StatelessWidget {
   AuthPage({super.key});

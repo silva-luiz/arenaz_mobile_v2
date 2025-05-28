@@ -1,5 +1,5 @@
-import '../establishment_details/presenter/pages/establishment_details_page.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import '../establishment_details/presenter/pages/establishment_details_page.dart';
 
 enum ArenaDetailsRouteNamed { arenaDetails }
 
@@ -8,8 +8,6 @@ extension EstablishmentInfoRouteNamedExtension on ArenaDetailsRouteNamed {
     switch (this) {
       case ArenaDetailsRouteNamed.arenaDetails:
         return '/:id';
-      default:
-        return '/';
     }
   }
 }
