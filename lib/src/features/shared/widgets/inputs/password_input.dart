@@ -3,16 +3,19 @@ import 'package:flutter/material.dart';
 
 class PasswordInput extends StatefulWidget {
   final String? label;
-  final TextEditingController controller;
   final String hintText;
+  final TextEditingController? controller;
   final String? Function(String?)? validator;
+  final void Function(String)? onChanged;
+
 
   const PasswordInput({
     super.key,
     this.label,
     required this.hintText,
-    required this.controller,
+    this.controller,
     this.validator,
+    this.onChanged,
   });
 
   @override
@@ -29,10 +32,11 @@ class _PasswordInputState extends State<PasswordInput> {
       child: SizedBox(
         width: 350,
         child: TextFormField(
+          onChanged: widget.onChanged,
           controller: widget.controller,
           keyboardType: TextInputType.text,
           obscureText: _obscureText,
-          validator: widget.validator, // Aplicando o validador
+          validator: widget.validator,
           decoration: InputDecoration(
             filled: true,
             fillColor: AppColors.defaultWhite,
