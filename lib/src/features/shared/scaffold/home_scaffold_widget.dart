@@ -1,5 +1,5 @@
-import 'package:arenaz_mobile_v2/src/features/shared/colors/colors.dart';
-import 'package:arenaz_mobile_v2/src/features/shared/widgets/drawer/generic_drawer.dart';
+import '../colors/colors.dart';
+import '../widgets/drawer/generic_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 

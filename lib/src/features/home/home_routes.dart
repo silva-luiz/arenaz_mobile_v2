@@ -1,4 +1,4 @@
-import 'package:arenaz_mobile_v2/src/features/home/presenter/pages/home_page.dart';
+import 'presenter/pages/home_page.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../establishment_details/presenter/pages/establishment_details_page.dart';

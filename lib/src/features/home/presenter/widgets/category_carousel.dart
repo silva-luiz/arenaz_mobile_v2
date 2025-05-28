@@ -1,5 +1,6 @@
-import 'package:arenaz_mobile_v2/src/features/shared/colors/colors.dart';
 import 'package:flutter/material.dart';
+
+import '../../../shared/colors/colors.dart';
 
 class CategoryCarousel extends StatefulWidget {
   final Function(String) onCategorySelected;

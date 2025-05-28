@@ -1,10 +1,10 @@
-import 'package:arenaz_mobile_v2/src/features/profile/presenter/widgets/avatar_widget.dart';
-import 'package:arenaz_mobile_v2/src/features/shared/colors/colors.dart';
-import 'package:arenaz_mobile_v2/src/features/shared/helpers/password_validator.dart';
-import 'package:arenaz_mobile_v2/src/features/shared/widgets/buttons/generic_button.dart';
-import 'package:arenaz_mobile_v2/src/features/shared/widgets/drawer/generic_drawer.dart';
-import 'package:arenaz_mobile_v2/src/features/shared/widgets/inputs/generic_input.dart';
-import 'package:arenaz_mobile_v2/src/features/shared/widgets/inputs/password_input.dart';
+import '../widgets/avatar_widget.dart';
+import '../../../shared/colors/colors.dart';
+import '../../../shared/helpers/password_validator.dart';
+import '../../../shared/widgets/buttons/generic_button.dart';
+import '../../../shared/widgets/drawer/generic_drawer.dart';
+import '../../../shared/widgets/inputs/generic_input.dart';
+import '../../../shared/widgets/inputs/password_input.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatefulWidget {

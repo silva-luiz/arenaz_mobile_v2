@@ -1,4 +1,4 @@
-import 'package:arenaz_mobile_v2/src/features/establishment_details/presenter/pages/establishment_details_page.dart';
+import '../establishment_details/presenter/pages/establishment_details_page.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 enum ArenaDetailsRouteNamed { arenaDetails }

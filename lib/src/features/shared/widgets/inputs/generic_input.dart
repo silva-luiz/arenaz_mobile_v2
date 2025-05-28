@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
 import '../../colors/colors.dart';
 
 class GenericInput extends StatelessWidget {

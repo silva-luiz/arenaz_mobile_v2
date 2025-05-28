@@ -1,4 +1,4 @@
-import 'package:arenaz_mobile_v2/src/features/profile/presenter/pages/profile_page.dart';
+import 'presenter/pages/profile_page.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 enum ProfileRouteNamed { profile }

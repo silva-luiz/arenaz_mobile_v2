@@ -1,6 +1,6 @@
-import 'package:arenaz_mobile_v2/src/features/arena_details/arena_details_binds.dart';
-import 'package:arenaz_mobile_v2/src/features/arena_details/arena_details_routes.dart';
-import 'package:arenaz_mobile_v2/src/features/shared/shared_module.dart';
+import 'arena_details_binds.dart';
+import 'arena_details_routes.dart';
+import '../shared/shared_module.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class ArenaDetailsModule extends Module {

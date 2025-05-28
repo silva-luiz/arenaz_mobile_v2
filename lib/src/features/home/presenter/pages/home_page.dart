@@ -1,7 +1,7 @@
-import 'package:arenaz_mobile_v2/src/features/home/presenter/widgets/establishment_card.dart';
-import 'package:arenaz_mobile_v2/src/features/home/presenter/widgets/category_carousel.dart';
-import 'package:arenaz_mobile_v2/src/features/shared/colors/colors.dart';
-import 'package:arenaz_mobile_v2/src/features/shared/scaffold/home_scaffold_widget.dart';
+import '../widgets/establishment_card.dart';
+import '../widgets/category_carousel.dart';
+import '../../../shared/colors/colors.dart';
+import '../../../shared/scaffold/home_scaffold_widget.dart';
 import 'package:flutter/material.dart';
 
 class Establishment {

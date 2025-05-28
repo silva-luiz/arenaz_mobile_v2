@@ -1,7 +1,7 @@
-import 'package:arenaz_mobile_v2/src/features/shared/colors/colors.dart';
-import 'package:arenaz_mobile_v2/src/features/shared/widgets/badges/category_badge.widget.dart';
 import 'package:flutter/material.dart';
 
+import '../../../shared/colors/colors.dart';
+import '../../../shared/widgets/badges/category_badge.widget.dart';
 import '../widgets/arena_card.widget.dart';
 
 class EstablishmentDetailsPage extends StatelessWidget {

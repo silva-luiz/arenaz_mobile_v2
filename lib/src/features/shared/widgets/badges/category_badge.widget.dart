@@ -1,5 +1,6 @@
-import 'package:arenaz_mobile_v2/src/features/shared/colors/colors.dart';
 import 'package:flutter/material.dart';
+
+import '../../colors/colors.dart';
 
 class CategoryBadge extends StatelessWidget {
   final String category;

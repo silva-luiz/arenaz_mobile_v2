@@ -1,4 +1,4 @@
-import 'package:arenaz_mobile_v2/src/features/shared/colors/colors.dart';
+import '../../colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 

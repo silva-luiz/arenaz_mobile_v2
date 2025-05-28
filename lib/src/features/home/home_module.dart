@@ -1,7 +1,8 @@
-import 'package:arenaz_mobile_v2/src/features/home/home_binds.dart';
-import 'package:arenaz_mobile_v2/src/features/home/home_routes.dart';
-import 'package:arenaz_mobile_v2/src/features/shared/shared_module.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+
+import '../shared/shared_module.dart';
+import 'home_binds.dart';
+import 'home_routes.dart';
 
 class HomeModule extends Module {
   @override
