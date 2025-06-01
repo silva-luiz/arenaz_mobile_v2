@@ -14,4 +14,6 @@ class AppColors {
   static const Color success = Color(0xFF28A745);
   static const Color warning = Color(0xFFFFC107);
   static const Color danger = Color(0xFFDC3545);
+  static const Color disabledBackground = Color(0xFFE0E0E0); // cinza claro
+  static const Color disabledText = Color(0xFF9E9E9E); // cinza escuro
 }

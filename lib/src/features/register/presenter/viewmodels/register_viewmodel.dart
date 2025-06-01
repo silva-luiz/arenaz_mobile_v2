@@ -1,56 +1,60 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
+
+import '../../domain/usecases/register_player_usecase.dart';
 
 part 'register_viewmodel.g.dart';
 
 class RegisterViewmodel = _RegisterViewmodelBase with _$RegisterViewmodel;
 
 abstract class _RegisterViewmodelBase with Store {
-  final Dio _dio;  
+  final Dio _dio;
   _RegisterViewmodelBase({Dio? dio}) : _dio = dio ?? Dio();
+  final _registerPlayerUsecase = Modular.get<RegisterPlayerUseCase>();
 
   // User info
   @observable
   String name = '';
-  
+
   @observable
   String email = '';
-  
+
   @observable
   String password = '';
-  
+
   @observable
   String confirmPassword = '';
-  
+
   @observable
   String phone = '';
 
   // Address info
   @observable
   String cep = '';
-  
+
   @observable
   String address = '';
-  
+
   @observable
   String city = '';
-  
+
   @observable
   String state = '';
-  
+
   @observable
   String neighborhood = '';
-  
+
   @observable
   String number = '';
-  
+
   @observable
   String complement = '';
 
   // State
   @observable
   bool isLoading = false;
-  
+
   @observable
   String? errorMessage;
 
@@ -59,7 +63,7 @@ abstract class _RegisterViewmodelBase with Store {
   bool get isNameValid => name.length >= 3;
 
   @computed
-  bool get isEmailValid => 
+  bool get isEmailValid =>
       RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(email);
 
   @computed
@@ -105,7 +109,8 @@ abstract class _RegisterViewmodelBase with Store {
   void setConfirmPassword(String value) => confirmPassword = value;
 
   @action
-  void setPhone(String value) => phone = value.replaceAll(RegExp(r'[^0-9]'), '');
+  void setPhone(String value) =>
+      phone = value.replaceAll(RegExp(r'[^0-9]'), '');
 
   @action
   void setCep(String value) {
@@ -135,10 +140,15 @@ abstract class _RegisterViewmodelBase with Store {
   void setComplement(String value) => complement = value;
 
   @action
+  setLoading(bool value) {
+    isLoading = value;
+  }
+
+  @action
   Future<void> fetchAddressByCep(String cep) async {
     isLoading = true;
     errorMessage = null;
-    
+
     try {
       final response = await _dio.get('https://viacep.com.br/ws/$cep/json/');
 
@@ -147,13 +157,15 @@ abstract class _RegisterViewmodelBase with Store {
           errorMessage = 'CEP não encontrado';
         } else {
           if (address.isEmpty) address = response.data['logradouro'] ?? '';
-          if (neighborhood.isEmpty) neighborhood = response.data['bairro'] ?? '';
+          if (neighborhood.isEmpty)
+            neighborhood = response.data['bairro'] ?? '';
           if (city.isEmpty) city = response.data['localidade'] ?? '';
           if (state.isEmpty) state = response.data['uf'] ?? '';
         }
       }
     } on DioException catch (e) {
-      errorMessage = 'Erro ao buscar CEP. Verifique sua conexão ou o CEP digitado.';
+      errorMessage =
+          'Erro ao buscar CEP. Verifique sua conexão ou o CEP digitado.';
       print('Erro ao buscar endereço: $e');
     } catch (e) {
       errorMessage = 'Ocorreu um erro inesperado';
@@ -164,46 +176,26 @@ abstract class _RegisterViewmodelBase with Store {
   }
 
   @action
-  Future<bool> registerUser() async {
-    if (!isFormValid) return false;
-
-    isLoading = true;
-    errorMessage = null;
-    
+  Future<void> registerPlayer() async {
+    setLoading(true);
     try {
-      // Simulando chamada à API
-      await Future.delayed(Duration(seconds: 2));
-      
-      // Aqui você faria a chamada real ao seu backend:
-      // final response = await _dio.post('sua-api.com/register', data: {
-      //   'name': name,
-      //   'email': email,
-      //   'password': password,
-      //   'phone': phone,
-      //   'address': {
-      //     'cep': cep.isNotEmpty ? cep : null, // Send null if CEP is empty
-      //     'street': address,
-      //     'number': number,
-      //     'complement': complement,
-      //     'neighborhood': neighborhood,
-      //     'city': city,
-      //     'state': state,
-      //   }
-      // });
-      
-      return true;
-    } on DioException catch (e) {
-      if (e.response?.statusCode == 400) {
-        errorMessage = 'E-mail já cadastrado';
-      } else {
-        errorMessage = 'Erro ao conectar com o servidor';
-      }
-      return false;
+      await _registerPlayerUsecase.call(
+        userName: name,
+        userPhone: phone,
+        userEmail: email,
+        userPassword: password,
+        userConfirmPassword: confirmPassword,
+        userCep: cep,
+        userAddress: address,
+        userNeighborhood: neighborhood,
+        userCity: city,
+        userState: state,
+      );
     } catch (e) {
-      errorMessage = 'Ocorreu um erro inesperado';
-      return false;
+      errorMessage =
+          'Failed to register a new Player ${e.toString().replaceAll('Exception: ', '')}';
     } finally {
-      isLoading = false;
+      setLoading(false);
     }
   }
 }

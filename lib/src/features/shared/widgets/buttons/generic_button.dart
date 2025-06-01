@@ -42,16 +42,32 @@ class GenericButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool isDisabled = onPressed == null;
+
     return SizedBox(
       height: 50,
       width: 350,
       child: ElevatedButton(
         style: ButtonStyle(
-          foregroundColor: WidgetStatePropertyAll(textColor),
-          textStyle: const WidgetStatePropertyAll(
+          backgroundColor: MaterialStateProperty.resolveWith<Color>(
+            (states) {
+              if (states.contains(MaterialState.disabled)) {
+                return AppColors.disabledBackground;
+              }
+              return backgroundColor;
+            },
+          ),
+          foregroundColor: MaterialStateProperty.resolveWith<Color>(
+            (states) {
+              if (states.contains(MaterialState.disabled)) {
+                return AppColors.disabledText;
+              }
+              return textColor;
+            },
+          ),
+          textStyle: const MaterialStatePropertyAll(
             TextStyle(fontWeight: FontWeight.w600, fontSize: 18.0),
           ),
-          backgroundColor: WidgetStatePropertyAll(backgroundColor),
         ),
         onPressed: onPressed,
         child: Text(label),

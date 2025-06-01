@@ -299,12 +299,12 @@ mixin _$RegisterViewmodel on _RegisterViewmodelBase, Store {
         .run(() => super.fetchAddressByCep(cep));
   }
 
-  late final _$registerUserAsyncAction =
-      AsyncAction('_RegisterViewmodelBase.registerUser', context: context);
+  late final _$registerPlayerAsyncAction =
+      AsyncAction('_RegisterViewmodelBase.registerPlayer', context: context);
 
   @override
-  Future<bool> registerUser() {
-    return _$registerUserAsyncAction.run(() => super.registerUser());
+  Future<void> registerPlayer() {
+    return _$registerPlayerAsyncAction.run(() => super.registerPlayer());
   }
 
   late final _$_RegisterViewmodelBaseActionController =
@@ -437,6 +437,17 @@ mixin _$RegisterViewmodel on _RegisterViewmodelBase, Store {
         name: '_RegisterViewmodelBase.setComplement');
     try {
       return super.setComplement(value);
+    } finally {
+      _$_RegisterViewmodelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic setLoading(bool value) {
+    final _$actionInfo = _$_RegisterViewmodelBaseActionController.startAction(
+        name: '_RegisterViewmodelBase.setLoading');
+    try {
+      return super.setLoading(value);
     } finally {
       _$_RegisterViewmodelBaseActionController.endAction(_$actionInfo);
     }

@@ -42,6 +42,27 @@ class _RegisterPageState extends State<RegisterPage> {
     super.dispose();
   }
 
+  // Future<void> _submitForm() async {
+  //   if (_formKey.currentState?.validate() ?? false) {
+  //     if (!viewmodel.isConfirmPasswordValid) {
+  //       ScaffoldMessenger.of(context).showSnackBar(
+  //         const SnackBar(content: Text('As senhas não coincidem.')),
+  //       );
+  //       return;
+  //     }
+
+  //     await viewmodel.registerPlayer();
+
+  //     if (viewmodel.errorMessage == null && mounted) {
+  //       Modular.to.pushNamed('/');
+  //     } else if (viewmodel.errorMessage != null && mounted) {
+  //       ScaffoldMessenger.of(
+  //         context,
+  //       ).showSnackBar(SnackBar(content: Text(viewmodel.errorMessage!)));
+  //     }
+  //   }
+  // }
+
   Future<void> _submitForm() async {
     if (_formKey.currentState?.validate() ?? false) {
       if (!viewmodel.isConfirmPasswordValid) {
@@ -51,13 +72,22 @@ class _RegisterPageState extends State<RegisterPage> {
         return;
       }
 
-      final success = await viewmodel.registerUser();
-      if (success && mounted) {
+      await viewmodel.registerPlayer();
+
+      if (viewmodel.errorMessage == null && mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Conta criada com sucesso!'),
+            backgroundColor: AppColors.success,
+          ),
+        );
+        await Future.delayed(const Duration(seconds: 2));
+
         Modular.to.pushNamed('/');
       } else if (viewmodel.errorMessage != null && mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(viewmodel.errorMessage!)),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(viewmodel.errorMessage!)));
       }
     }
   }
@@ -67,13 +97,14 @@ class _RegisterPageState extends State<RegisterPage> {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body: Observer(
-        builder: (_) => Stack(
-          children: [
-            _buildFormContent(),
-            if (viewmodel.isLoading)
-              const Center(child: CircularProgressIndicator()),
-          ],
-        ),
+        builder:
+            (_) => Stack(
+              children: [
+                _buildFormContent(),
+                if (viewmodel.isLoading)
+                  const Center(child: CircularProgressIndicator()),
+              ],
+            ),
       ),
     );
   }
@@ -131,14 +162,16 @@ class _RegisterPageState extends State<RegisterPage> {
                       GenericInput(
                         hintText: 'Nome completo',
                         onChanged: viewmodel.setName,
-                        validator: (value) => value == null || value.isEmpty
-                            ? 'Informe seu nome completo'
-                            : value.length < 3
-                                ? 'Nome muito curto'
-                                : null,
+                        validator:
+                            (value) =>
+                                value == null || value.isEmpty
+                                    ? 'Informe seu nome completo'
+                                    : value.length < 3
+                                    ? 'Nome muito curto'
+                                    : null,
                       ),
                       const SizedBox(height: 16),
-                      
+
                       // Celular
                       GenericInput(
                         hintText: 'Celular',
@@ -150,26 +183,29 @@ class _RegisterPageState extends State<RegisterPage> {
                           MaskHelper.phoneFormatter(),
                         ],
                         validator: (value) {
-                          final digits = value?.replaceAll(RegExp(r'\D'), '') ?? '';
-                          if (digits.length != 11) return 'Número de celular inválido';
+                          final digits =
+                              value?.replaceAll(RegExp(r'\D'), '') ?? '';
+                          if (digits.length != 11)
+                            return 'Número de celular inválido';
                           return null;
                         },
                       ),
                       const SizedBox(height: 16),
-                      
+
                       // Email
                       GenericInput(
                         hintText: 'E-mail',
                         keyboardType: TextInputType.emailAddress,
                         onChanged: viewmodel.setEmail,
                         validator: (value) {
-                          if (value == null || value.isEmpty) return 'Informe um e-mail';
+                          if (value == null || value.isEmpty)
+                            return 'Informe um e-mail';
                           if (!viewmodel.isEmailValid) return 'E-mail inválido';
                           return null;
                         },
                       ),
                       const SizedBox(height: 16),
-                      
+
                       // Senha
                       PasswordInput(
                         hintText: 'Escolha uma senha',
@@ -177,21 +213,24 @@ class _RegisterPageState extends State<RegisterPage> {
                         onChanged: viewmodel.setPassword,
                       ),
                       const SizedBox(height: 16),
-                      
+
                       // Confirmação de senha
                       Observer(
-                        builder: (_) => PasswordInput(
-                          hintText: 'Digite novamente a senha',
-                          onChanged: viewmodel.setConfirmPassword,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) return 'Confirme sua senha';
-                            if (!viewmodel.isConfirmPasswordValid) return 'As senhas não coincidem';
-                            return null;
-                          },
-                        ),
+                        builder:
+                            (_) => PasswordInput(
+                              hintText: 'Digite novamente a senha',
+                              onChanged: viewmodel.setConfirmPassword,
+                              validator: (value) {
+                                if (value == null || value.isEmpty)
+                                  return 'Confirme sua senha';
+                                if (!viewmodel.isConfirmPasswordValid)
+                                  return 'As senhas não coincidem';
+                                return null;
+                              },
+                            ),
                       ),
                       const SizedBox(height: 24),
-                      
+
                       // Título da seção de endereço
                       const Align(
                         alignment: Alignment.centerLeft,
@@ -205,7 +244,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                       ),
                       const SizedBox(height: 16),
-                      
+
                       // CEP
                       GenericInput(
                         hintText: 'CEP',
@@ -218,93 +257,118 @@ class _RegisterPageState extends State<RegisterPage> {
                           MaskHelper.cepFormatter(),
                         ],
                         validator: (value) {
-                          final digits = value?.replaceAll(RegExp(r'\D'), '') ?? '';
+                          final digits =
+                              value?.replaceAll(RegExp(r'\D'), '') ?? '';
                           if (digits.length != 8) return 'Digite um CEP válido';
                           return null;
                         },
                       ),
                       const SizedBox(height: 16),
-                      
+
                       // Rua (preenchido automaticamente pelo CEP)
                       Observer(
-                        builder: (_) => GenericInput(
-                          hintText: 'Rua',
-                          controller: TextEditingController(text: viewmodel.address),
-                          focusNode: _addressFocusNode,
-                          onChanged: viewmodel.setAddress,
-                          validator: (value) => value == null || value.isEmpty
-                              ? 'Informe o endereço'
-                              : null,
-                        ),
+                        builder:
+                            (_) => GenericInput(
+                              hintText: 'Rua',
+                              controller: TextEditingController(
+                                text: viewmodel.address,
+                              ),
+                              focusNode: _addressFocusNode,
+                              onChanged: viewmodel.setAddress,
+                              validator:
+                                  (value) =>
+                                      value == null || value.isEmpty
+                                          ? 'Informe o endereço'
+                                          : null,
+                            ),
                       ),
                       const SizedBox(height: 16),
-                      
+
                       // Número
                       GenericInput(
                         hintText: 'Número',
                         keyboardType: TextInputType.number,
                         onChanged: viewmodel.setNumber,
-                        validator: (value) => value == null || value.isEmpty
-                            ? 'Informe o número'
-                            : null,
+                        validator:
+                            (value) =>
+                                value == null || value.isEmpty
+                                    ? 'Informe o número'
+                                    : null,
                       ),
                       const SizedBox(height: 16),
-                      
+
                       // Complemento
                       GenericInput(
                         hintText: 'Complemento (opcional)',
                         onChanged: viewmodel.setComplement,
                       ),
                       const SizedBox(height: 16),
-                      
+
                       // Bairro (preenchido automaticamente pelo CEP)
                       Observer(
-                        builder: (_) => GenericInput(
-                          hintText: 'Bairro',
-                          controller: TextEditingController(text: viewmodel.neighborhood),
-                          onChanged: viewmodel.setNeighborhood,
-                          validator: (value) => value == null || value.isEmpty
-                              ? 'Informe o bairro'
-                              : null,
-                        ),
+                        builder:
+                            (_) => GenericInput(
+                              hintText: 'Bairro',
+                              controller: TextEditingController(
+                                text: viewmodel.neighborhood,
+                              ),
+                              onChanged: viewmodel.setNeighborhood,
+                              validator:
+                                  (value) =>
+                                      value == null || value.isEmpty
+                                          ? 'Informe o bairro'
+                                          : null,
+                            ),
                       ),
                       const SizedBox(height: 16),
-                      
+
                       // Cidade (preenchido automaticamente pelo CEP)
                       Observer(
-                        builder: (_) => GenericInput(
-                          hintText: 'Cidade',
-                          controller: TextEditingController(text: viewmodel.city),
-                          onChanged: viewmodel.setCity,
-                          validator: (value) => value == null || value.isEmpty
-                              ? 'Informe a cidade'
-                              : null,
-                        ),
+                        builder:
+                            (_) => GenericInput(
+                              hintText: 'Cidade',
+                              controller: TextEditingController(
+                                text: viewmodel.city,
+                              ),
+                              onChanged: viewmodel.setCity,
+                              validator:
+                                  (value) =>
+                                      value == null || value.isEmpty
+                                          ? 'Informe a cidade'
+                                          : null,
+                            ),
                       ),
                       const SizedBox(height: 16),
-                      
+
                       // Estado (preenchido automaticamente pelo CEP)
                       Observer(
-                        builder: (_) => GenericInput(
-                          hintText: 'Estado',
-                          controller: TextEditingController(text: viewmodel.state),
-                          onChanged: viewmodel.setState,
-                          validator: (value) => value == null || value.isEmpty
-                              ? 'Informe o estado'
-                              : null,
-                        ),
+                        builder:
+                            (_) => GenericInput(
+                              hintText: 'Estado',
+                              controller: TextEditingController(
+                                text: viewmodel.state,
+                              ),
+                              onChanged: viewmodel.setState,
+                              validator:
+                                  (value) =>
+                                      value == null || value.isEmpty
+                                          ? 'Informe o estado'
+                                          : null,
+                            ),
                       ),
                       const SizedBox(height: 24),
-                      
+
                       // Botão de cadastro
                       Observer(
-                        builder: (_) => GenericButton(
-                          label: 'Criar conta',
-                          onPressed: viewmodel.isFormValid ? _submitForm : null,
-                        ),
+                        builder:
+                            (_) => GenericButton(
+                              label: 'Criar conta',
+                              onPressed:
+                                  viewmodel.isFormValid ? _submitForm : null,
+                            ),
                       ),
                       const SizedBox(height: 24),
-                      
+
                       // Link para login
                       RichText(
                         textAlign: TextAlign.center,
@@ -322,8 +386,9 @@ class _RegisterPageState extends State<RegisterPage> {
                                 color: AppColors.primaryColor,
                                 fontWeight: FontWeight.bold,
                               ),
-                              recognizer: TapGestureRecognizer()
-                                ..onTap = () => Modular.to.pushNamed('/'),
+                              recognizer:
+                                  TapGestureRecognizer()
+                                    ..onTap = () => Modular.to.pushNamed('/'),
                             ),
                           ],
                         ),
