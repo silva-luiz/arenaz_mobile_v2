@@ -74,7 +74,7 @@ class _HomePageState extends State<HomePage> {
     Establishment(
       id: 4,
       name: 'Arena 360',
-      category: ['Outra'],
+      category: ['Outras'],
       address: 'Rua do Esporte, 101',
       city: 'Campinas',
       value: 'R\$ 110.00 - R\$ 150.00',
@@ -89,7 +89,9 @@ class _HomePageState extends State<HomePage> {
       return allEstablishments;
     }
     return allEstablishments
-        .where((establishment) => establishment.category == selectedCategory)
+        .where(
+          (establishment) => establishment.category.contains(selectedCategory),
+        )
         .toList();
   }
 
@@ -127,8 +129,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   )
                   : ListView.builder(
-                    shrinkWrap:
-                        true, // Permite que o ListView ocupe apenas o espaço necessário
+                    shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
                     itemCount: filteredEstablishments.length,
                     itemBuilder: (context, index) {
