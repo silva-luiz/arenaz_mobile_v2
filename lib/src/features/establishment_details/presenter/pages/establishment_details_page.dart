@@ -92,55 +92,58 @@ class EstablishmentDetailsPage extends StatelessWidget {
                     style: TextStyle(color: AppColors.textColor, fontSize: 16),
                   ),
                 ),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children:
-                        [
-                              ArenaCard(
-                                arena: {
-                                  'id': '1',
-                                  'name': 'Arena Tênis Top',
-                                  'type': 'Tênis',
-                                  'value': 120.00,
-                                  'image': 'assets/images/arena1.jpg',
-                                },
-                              ),
-                              ArenaCard(
-                                arena: {
-                                  'id': '2',
-                                  'name': 'Arena Master',
-                                  'type': 'Outra',
-                                  'value': 100.00,
-                                  'image': 'assets/images/arena2.jpg',
-                                },
-                              ),
-                              ArenaCard(
-                                arena: {
-                                  'id': '3',
-                                  'name': 'Arena Beach Pro',
-                                  'type': 'Beach Sports',
-                                  'value': 90.00,
-                                  'image': 'assets/images/arena3.jpg',
-                                },
-                              ),
-                              ArenaCard(
-                                arena: {
-                                  'id': '4',
-                                  'name': 'Arena Society Luxo',
-                                  'type': 'Society',
-                                  'value': 150.0,
-                                  'image': 'assets/images/arena4.jpg',
-                                },
-                              ),
-                            ]
-                            .map(
-                              (card) => Padding(
-                                padding: const EdgeInsets.only(right: 12.0),
-                                child: card,
-                              ),
-                            )
-                            .toList(),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 20.0),
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children:
+                          [
+                                ArenaCard(
+                                  arena: {
+                                    'id': '1',
+                                    'name': 'Arena Tênis Top',
+                                    'type': 'Tênis',
+                                    'value': 120.00,
+                                    'image': 'assets/images/arena1.jpg',
+                                  },
+                                ),
+                                ArenaCard(
+                                  arena: {
+                                    'id': '2',
+                                    'name': 'Arena Master',
+                                    'type': 'Outra',
+                                    'value': 100.00,
+                                    'image': 'assets/images/arena2.jpg',
+                                  },
+                                ),
+                                ArenaCard(
+                                  arena: {
+                                    'id': '3',
+                                    'name': 'Arena Beach Pro',
+                                    'type': 'Beach Sports',
+                                    'value': 90.00,
+                                    'image': 'assets/images/arena3.jpg',
+                                  },
+                                ),
+                                ArenaCard(
+                                  arena: {
+                                    'id': '4',
+                                    'name': 'Arena Society Luxo',
+                                    'type': 'Society',
+                                    'value': 150.0,
+                                    'image': 'assets/images/arena4.jpg',
+                                  },
+                                ),
+                              ]
+                              .map(
+                                (card) => Padding(
+                                  padding: const EdgeInsets.only(right: 12.0),
+                                  child: card,
+                                ),
+                              )
+                              .toList(),
+                    ),
                   ),
                 ),
               ],
