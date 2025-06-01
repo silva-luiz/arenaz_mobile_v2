@@ -72,7 +72,7 @@ abstract class _RegisterViewmodelBase with Store {
   bool get isPhoneValid => phone.length >= 10;
 
   @computed
-  bool get isCepValid => cep.length == 8;
+  bool get isCepValid => cep.isEmpty || cep.length == 8;
 
   @computed
   bool get isAddressValid => address.isNotEmpty;
@@ -109,9 +109,10 @@ abstract class _RegisterViewmodelBase with Store {
 
   @action
   void setCep(String value) {
-    cep = value.replaceAll(RegExp(r'[^0-9]'), '');
-    if (cep.length == 8) {
-      fetchAddressByCep(cep);
+    final newCep = value.replaceAll(RegExp(r'[^0-9]'), '');
+    cep = newCep;
+    if (newCep.length == 8) {
+      fetchAddressByCep(newCep);
     }
   }
 
@@ -145,10 +146,10 @@ abstract class _RegisterViewmodelBase with Store {
         if (response.data['erro'] == true) {
           errorMessage = 'CEP não encontrado';
         } else {
-          address = response.data['logradouro'] ?? '';
-          neighborhood = response.data['bairro'] ?? '';
-          city = response.data['localidade'] ?? '';
-          state = response.data['uf'] ?? '';
+          if (address.isEmpty) address = response.data['logradouro'] ?? '';
+          if (neighborhood.isEmpty) neighborhood = response.data['bairro'] ?? '';
+          if (city.isEmpty) city = response.data['localidade'] ?? '';
+          if (state.isEmpty) state = response.data['uf'] ?? '';
         }
       }
     } on DioException catch (e) {
@@ -180,7 +181,7 @@ abstract class _RegisterViewmodelBase with Store {
       //   'password': password,
       //   'phone': phone,
       //   'address': {
-      //     'cep': cep,
+      //     'cep': cep.isNotEmpty ? cep : null, // Send null if CEP is empty
       //     'street': address,
       //     'number': number,
       //     'complement': complement,
@@ -190,7 +191,7 @@ abstract class _RegisterViewmodelBase with Store {
       //   }
       // });
       
-      return true; // Retorna true se o registro for bem-sucedido
+      return true;
     } on DioException catch (e) {
       if (e.response?.statusCode == 400) {
         errorMessage = 'E-mail já cadastrado';
