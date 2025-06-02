@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import '../../../shared/api_routes/api_routes.dart';
 import '../models/request/register_player_request_dto.dart';
 import 'register_datasource.dart';
 
@@ -35,7 +36,7 @@ class RegisterDatasourceImpl extends RegisterDatasource {
         isOwner: false,
       );
       final response = await dio.post(
-        'http://10.0.2.2:8000/api/user',
+        ApiRoutes.registerUser,
         data: dto.toJson(),
       );
       return response.data;
