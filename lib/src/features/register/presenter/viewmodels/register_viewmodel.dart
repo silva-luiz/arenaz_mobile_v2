@@ -178,24 +178,17 @@ abstract class _RegisterViewmodelBase with Store {
   @action
   Future<void> registerPlayer() async {
     setLoading(true);
-    try {
-      await _registerPlayerUsecase.call(
-        userName: name,
-        userPhone: phone,
-        userEmail: email,
-        userPassword: password,
-        userConfirmPassword: confirmPassword,
-        userCep: cep,
-        userAddress: address,
-        userNeighborhood: neighborhood,
-        userCity: city,
-        userState: state,
-      );
-    } catch (e) {
-      errorMessage =
-          'Failed to register a new Player ${e.toString().replaceAll('Exception: ', '')}';
-    } finally {
-      setLoading(false);
-    }
+    final result = await _registerPlayerUsecase.call(
+      userName: name,
+      userPhone: phone,
+      userEmail: email,
+      userPassword: password,
+      userConfirmPassword: confirmPassword,
+      userCep: cep,
+      userAddress: address,
+      userNeighborhood: neighborhood,
+      userCity: city,
+      userState: state,
+    );
   }
 }
